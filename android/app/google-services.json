@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "203853330417",
+    "project_id": "culturize-5c76f",
+    "storage_bucket": "culturize-5c76f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203853330417:android:9b4e0836de9db65dd5b650",
+        "android_client_info": {
+          "package_name": "com.mycompany.culturize"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203853330417-7u7df0b188pkt6d4ui3l8a154g80os1o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.culturize",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "203853330417-sd9psf1a5a60iff6dojceoenrefu6t5t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.culturize",
+            "certificate_hash": "8895801c3445885d644a0b1b13263fee00d42de1"
+          }
+        },
+        {
+          "client_id": "203853330417-4g77t9vfq6fq82ohk6eoi0c5fr6cbn81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTMQYGsuXjC8TyVjWedQFsqv9RsdCiwGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203853330417-4g77t9vfq6fq82ohk6eoi0c5fr6cbn81.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "203853330417-t5je1k2qekkmvpb52svhn9gqpbluicp6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.culturize"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
