@@ -2,8 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/homepage/homepage_widget.dart';
-import '/sign_in/sign_in_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,11 +11,28 @@ import 'package:provider/provider.dart';
 class SignUpModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  final formKey = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
-  String? _textController1Validator(BuildContext context, String? val) {
+  // State field(s) for TextField widget.
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField widget.
+  TextEditingController? textController3;
+  late bool passwordVisibility1;
+  String? Function(BuildContext, String?)? textController3Validator;
+  // State field(s) for TextField widget.
+  TextEditingController? textController4;
+  late bool passwordVisibility2;
+  String? Function(BuildContext, String?)? textController4Validator;
+  // Stores action output result for [Backend Call - API (Sign up)] action in Container widget.
+  ApiCallResponse? signupdata;
+  // State field(s) for TextField widget.
+  TextEditingController? textController5;
+  String? Function(BuildContext, String?)? textController5Validator;
+  String? _textController5Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Enter username';
     }
@@ -29,9 +44,9 @@ class SignUpModel extends FlutterFlowModel {
   }
 
   // State field(s) for TextField widget.
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  String? _textController2Validator(BuildContext context, String? val) {
+  TextEditingController? textController6;
+  String? Function(BuildContext, String?)? textController6Validator;
+  String? _textController6Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Enter valid email';
     }
@@ -45,10 +60,10 @@ class SignUpModel extends FlutterFlowModel {
   }
 
   // State field(s) for TextField widget.
-  TextEditingController? textController3;
-  late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? textController3Validator;
-  String? _textController3Validator(BuildContext context, String? val) {
+  TextEditingController? textController7;
+  late bool passwordVisibility3;
+  String? Function(BuildContext, String?)? textController7Validator;
+  String? _textController7Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Enter password';
     }
@@ -60,32 +75,22 @@ class SignUpModel extends FlutterFlowModel {
   }
 
   // State field(s) for TextField widget.
-  TextEditingController? textController4;
-  late bool passwordVisibility2;
-  String? Function(BuildContext, String?)? textController4Validator;
-  String? _textController4Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Enter confirm password';
-    }
-
-    if (!RegExp('^[0-9]').hasMatch(val)) {
-      return 'Enter digits only';
-    }
-    return null;
-  }
-
+  TextEditingController? textController8;
+  late bool passwordVisibility4;
+  String? Function(BuildContext, String?)? textController8Validator;
   // Stores action output result for [Backend Call - API (Sign up)] action in Container widget.
-  ApiCallResponse? signupdata;
+  ApiCallResponse? signupdata1;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    textController1Validator = _textController1Validator;
-    textController2Validator = _textController2Validator;
     passwordVisibility1 = false;
-    textController3Validator = _textController3Validator;
     passwordVisibility2 = false;
-    textController4Validator = _textController4Validator;
+    textController5Validator = _textController5Validator;
+    textController6Validator = _textController6Validator;
+    passwordVisibility3 = false;
+    textController7Validator = _textController7Validator;
+    passwordVisibility4 = false;
   }
 
   void dispose() {
@@ -93,6 +98,10 @@ class SignUpModel extends FlutterFlowModel {
     textController2?.dispose();
     textController3?.dispose();
     textController4?.dispose();
+    textController5?.dispose();
+    textController6?.dispose();
+    textController7?.dispose();
+    textController8?.dispose();
   }
 
   /// Additional helper methods are added here.

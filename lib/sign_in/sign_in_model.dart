@@ -2,8 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/homepage/homepage_widget.dart';
-import '/sign_up/sign_up_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -15,18 +13,17 @@ import 'package:provider/provider.dart';
 class SignInModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  final formKey = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter valid email';
+      return 'Enter Your Email';
     }
 
-    if (!RegExp(
-            '^[a-zA-Z0-9.a-zA-Z0-9.!#\$%&\'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\\.[a-zA-Z]+')
-        .hasMatch(val)) {
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
       return 'Invalid Email';
     }
     return null;
@@ -34,9 +31,40 @@ class SignInModel extends FlutterFlowModel {
 
   // State field(s) for TextField widget.
   TextEditingController? textController2;
-  late bool passwordVisibility;
+  late bool passwordVisibility1;
   String? Function(BuildContext, String?)? textController2Validator;
   String? _textController2Validator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Password';
+    }
+
+    if (!RegExp('^[0-9]').hasMatch(val)) {
+      return 'Enter digits only';
+    }
+    return null;
+  }
+
+  // Stores action output result for [Backend Call - API (login)] action in Container widget.
+  ApiCallResponse? apiResulthcrCopyCopy2;
+  // State field(s) for TextField widget.
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
+  String? _textController3Validator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Enter valid email';
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Invalid Email';
+    }
+    return null;
+  }
+
+  // State field(s) for TextField widget.
+  TextEditingController? textController4;
+  late bool passwordVisibility2;
+  String? Function(BuildContext, String?)? textController4Validator;
+  String? _textController4Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Enter password';
     }
@@ -48,19 +76,24 @@ class SignInModel extends FlutterFlowModel {
   }
 
   // Stores action output result for [Backend Call - API (login)] action in Container widget.
-  ApiCallResponse? apiResulthcr;
+  ApiCallResponse? apiResulthcr3;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;
-    passwordVisibility = false;
+    passwordVisibility1 = false;
     textController2Validator = _textController2Validator;
+    textController3Validator = _textController3Validator;
+    passwordVisibility2 = false;
+    textController4Validator = _textController4Validator;
   }
 
   void dispose() {
     textController1?.dispose();
     textController2?.dispose();
+    textController3?.dispose();
+    textController4?.dispose();
   }
 
   /// Additional helper methods are added here.

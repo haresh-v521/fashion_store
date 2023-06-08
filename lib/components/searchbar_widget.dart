@@ -27,8 +27,8 @@ class _SearchbarWidgetState extends State<SearchbarWidget>
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(250.0, 0.0),
+          duration: 400.ms,
+          begin: Offset(200.0, 0.0),
           end: Offset(0.0, 0.0),
         ),
       ],

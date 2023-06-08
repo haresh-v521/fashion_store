@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/sign_in/sign_in_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
@@ -43,7 +42,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
     'listViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
-        VisibilityEffect(duration: 1.ms),
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
@@ -61,6 +59,12 @@ class _HomepageWidgetState extends State<HomepageWidget>
     _model = createModel(context, () => HomepageModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Homepage'});
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -375,15 +379,16 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           logFirebaseEvent('Container_update_app_state');
                           FFAppState().isLoggedIn = false;
                           logFirebaseEvent('Container_navigate_to');
-                          await Navigator.pushAndRemoveUntil(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
-                              reverseDuration: Duration(milliseconds: 0),
-                              child: SignInWidget(),
-                            ),
-                            (r) => false,
+
+                          context.goNamed(
+                            'Sign_In',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                              ),
+                            },
                           );
                         },
                         child: Container(
@@ -621,6 +626,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                       height: 45.0,
                       decoration: BoxDecoration(
                         color: Color(0xFFF0FEFF),
+                        borderRadius: BorderRadius.circular(0.0),
                       ),
                       child: Align(
                         alignment: AlignmentDirectional(-1.0, -1.0),
@@ -730,23 +736,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             border: Border.all(
-                                              color: (CategorydataCall.tablist(
-                                                        listViewCategorydataResponse
-                                                            .jsonBody,
-                                                      ) as List)
-                                                              .map<String>((s) =>
-                                                                  s.toString())
-                                                              .toList()[
-                                                          valueOrDefault<int>(
-                                                        itemsIndex,
-                                                        0,
-                                                      )] ==
-                                                      valueOrDefault<String>(
-                                                        FFAppState().category,
-                                                        'All',
-                                                      )
-                                                  ? Color(0xFFAEAEAE)
-                                                  : Color(0xFFAEAEAE),
+                                              color: Color(0xFFAEAEAE),
                                             ),
                                           ),
                                           child: Align(
