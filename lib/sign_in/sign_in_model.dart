@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -6,13 +5,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SignInModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey2 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
   // State field(s) for TextField widget.
@@ -90,11 +89,14 @@ class SignInModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
     textController4?.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

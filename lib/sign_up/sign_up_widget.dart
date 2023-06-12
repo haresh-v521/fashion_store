@@ -1,10 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sign_up_model.dart';
@@ -21,7 +19,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   late SignUpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -44,7 +41,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -53,7 +49,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF0FEFF),
@@ -83,27 +79,66 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               45.0, 0.0, 45.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 25.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: Text(
-                                          'Welcome to ',
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
+                                      child: Text(
+                                        'Welcome to ',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.black,
+                                              fontSize: 40.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, -1.0),
+                                      child: RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: 'C',
+                                              style: GoogleFonts.getFont(
+                                                'Roboto',
+                                                color: Color(0xFF0097A7),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text: 'ulturize',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            )
+                                          ],
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Montserrat',
-                                                color: Colors.black,
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
                                                 fontSize: 40.0,
+                                                fontWeight: FontWeight.w600,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -113,51 +148,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                               ),
                                         ),
                                       ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
-                                        child: RichText(
-                                          text: TextSpan(
-                                            children: [
-                                              TextSpan(
-                                                text: 'C',
-                                                style: GoogleFonts.getFont(
-                                                  'Roboto',
-                                                  color: Color(0xFF0097A7),
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                              TextSpan(
-                                                text: 'ulturize',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              )
-                                            ],
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  fontSize: 40.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -783,37 +775,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 50.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'SIGN_UP_PAGE_Image_eqbofj95_ON_TAP');
-                                      logFirebaseEvent('Image_auth');
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      final user = await authManager
-                                          .signInWithGoogle(context);
-                                      if (user == null) {
-                                        return;
-                                      }
-                                      logFirebaseEvent('Image_navigate_to');
-
-                                      context.pushNamedAuth(
-                                          'Homepage', context.mounted);
-                                    },
-                                    child: SvgPicture.asset(
-                                      'assets/images/Google_Icon.svg',
-                                      width: 60.0,
-                                      height: 60.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
@@ -828,11 +789,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   ))
                     Align(
                       alignment: AlignmentDirectional(1.0, 1.0),
-                      child: Image.asset(
-                        'assets/images/Group_1.png',
-                        width: 200.0,
-                        height: 150.0,
-                        fit: BoxFit.cover,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                        child: Image.asset(
+                          'assets/images/Group_1.png',
+                          width: 200.0,
+                          height: 150.0,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   if (responsiveVisibility(
@@ -1575,33 +1540,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         ),
                                       ),
                                     ),
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'SIGN_UP_PAGE_Image_q5dlpxk7_ON_TAP');
-                                        logFirebaseEvent('Image_auth');
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        final user = await authManager
-                                            .signInWithGoogle(context);
-                                        if (user == null) {
-                                          return;
-                                        }
-                                        logFirebaseEvent('Image_navigate_to');
-
-                                        context.pushNamedAuth(
-                                            'Homepage', context.mounted);
-                                      },
-                                      child: SvgPicture.asset(
-                                        'assets/images/Google_Icon.svg',
-                                        width: 60.0,
-                                        height: 60.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
@@ -1617,11 +1555,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   ))
                     Align(
                       alignment: AlignmentDirectional(1.0, 1.0),
-                      child: Image.asset(
-                        'assets/images/Group_1.png',
-                        width: 200.0,
-                        height: 150.0,
-                        fit: BoxFit.fill,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                        child: Image.asset(
+                          'assets/images/Group_1.png',
+                          width: 240.0,
+                          height: 190.0,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                 ],

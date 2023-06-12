@@ -55,6 +55,8 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
+  final authUserSub = authenticatedUserStream.listen((_) {});
+
   @override
   void initState() {
     super.initState();
@@ -67,6 +69,13 @@ class _MyAppState extends State<MyApp> {
       Duration(seconds: 1),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
+  }
+
+  @override
+  void dispose() {
+    authUserSub.cancel();
+
+    super.dispose();
   }
 
   void setLocale(String language) {

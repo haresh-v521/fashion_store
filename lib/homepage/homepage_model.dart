@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 class HomepageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (categorydata)] action in Container widget.
   ApiCallResponse? data;
 
@@ -27,7 +28,11 @@ class HomepageModel extends FlutterFlowModel {
 
   void initState(BuildContext context) {}
 
-  void dispose() {}
+  void dispose() {
+    unfocusNode.dispose();
+  }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

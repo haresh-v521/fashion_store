@@ -36,7 +36,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
   late HomepageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'listViewOnPageLoadAnimation': AnimationInfo(
@@ -73,7 +72,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -82,7 +80,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF0FEFF),
@@ -491,7 +489,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                         color: Colors.transparent,
                                         child: GestureDetector(
                                           onTap: () => FocusScope.of(context)
-                                              .requestFocus(_unfocusNode),
+                                              .requestFocus(_model.unfocusNode),
                                           child: Container(
                                             height: 50.0,
                                             width: double.infinity,
