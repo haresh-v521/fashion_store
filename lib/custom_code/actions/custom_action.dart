@@ -19,8 +19,6 @@ Future customAction(BuildContext context) async {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          // height: MediaQuery.of(context).size.height,
-          // width: MediaQuery.of(context).size.width,
           backgroundColor: Colors.white,
           elevation: 0,
           scrollable: true,

@@ -96,7 +96,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -104,22 +104,28 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
-                                    child: Text(
-                                      'Welcome back',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: Colors.black,
-                                            fontSize: 35.0,
-                                            fontWeight: FontWeight.normal,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
-                                          ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 40.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Welcome back',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Colors.black,
+                                              fontSize: 35.0,
+                                              fontWeight: FontWeight.normal,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
                                     ),
                                   ),
                                   Align(
@@ -167,7 +173,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 50.0, 0.0, 0.0),
+                                    0.0, 30.0, 0.0, 0.0),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     boxShadow: [
@@ -182,7 +188,6 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   ),
                                   child: TextFormField(
                                     controller: _model.textController1,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Enter Your Email',
@@ -255,7 +260,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 25.0, 0.0, 0.0),
+                                    0.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     boxShadow: [
@@ -270,7 +275,6 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   ),
                                   child: TextFormField(
                                     controller: _model.textController2,
-                                    autofocus: true,
                                     textCapitalization: TextCapitalization.none,
                                     obscureText: !_model.passwordVisibility1,
                                     decoration: InputDecoration(
@@ -427,17 +431,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       FFAppState().isLoggedIn = true;
                                       logFirebaseEvent('Container_navigate_to');
 
-                                      context.goNamed(
-                                        'Homepage',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
+                                      context.goNamed('Homepage');
                                     } else {
                                       logFirebaseEvent(
                                           'Container_show_snack_bar');
@@ -445,7 +439,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'User doesn\'t exists please signup first in culturize',
+                                            'User doesn\'t exists or invalid credentials  please check or signup first in culturize',
                                             style: GoogleFonts.getFont(
                                               'Montserrat',
                                               color:
@@ -498,85 +492,81 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(-0.1, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 25.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.3, 0.15),
-                                        child: Text(
-                                          'Don’t have an account? ',
-                                          textAlign: TextAlign.start,
-                                          maxLines: 2,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.normal,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.3, 0.15),
+                                      child: Text(
+                                        'Don’t have an account? ',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.normal,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
                                       ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'SIGN_IN_PAGE_Text_hccmuox7_ON_TAP');
-                                          logFirebaseEvent('Text_navigate_to');
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'SIGN_IN_PAGE_Text_hccmuox7_ON_TAP');
+                                        logFirebaseEvent('Text_navigate_to');
 
-                                          context.goNamed(
-                                            'Sign_up',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType.fade,
-                                                duration:
-                                                    Duration(milliseconds: 0),
-                                              ),
-                                            },
-                                          );
-                                        },
-                                        child: Text(
-                                          ' Sign Up',
-                                          textAlign: TextAlign.start,
-                                          maxLines: 2,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                color: Color(0xFF0097A7),
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
+                                        context.goNamed(
+                                          'Sign_up',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Text(
+                                        ' Sign Up',
+                                        textAlign: TextAlign.start,
+                                        maxLines: 2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Color(0xFF0097A7),
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
@@ -993,19 +983,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             logFirebaseEvent(
                                                 'Container_navigate_to');
 
-                                            context.goNamed(
-                                              'Homepage',
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
-                                                ),
-                                              },
-                                            );
+                                            context.goNamed('Homepage');
                                           } else {
                                             logFirebaseEvent(
                                                 'Container_show_snack_bar');
